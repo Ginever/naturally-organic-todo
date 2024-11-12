@@ -49,7 +49,7 @@ function App() {
     const name = event.target.name;
     var value = event.target.value;
 
-    if (name == "isBagged") {
+    if (name === "isBagged") {
       value = !inputs.isBagged;
     }
 
@@ -81,6 +81,9 @@ function App() {
             <Todo key={item.id} arr={item} />
           ))}
         </List>
+
+        <img src={require("./url-qr-code.png")} width="150px" alt="QR code" />
+
         <Fab
           className="floating-action-button"
           color="primary"
@@ -145,7 +148,7 @@ function App() {
               color="primary"
               onClick={addTodo}
             >
-              Add Todo
+              Add Item
             </Button>
           </form>
         </Box>
