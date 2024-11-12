@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.e5628d7f.css",
-    "main.js": "/static/js/main.ada55a7a.js",
-    "index.html": "/index.html",
-    "main.e5628d7f.css.map": "/static/css/main.e5628d7f.css.map",
-    "main.ada55a7a.js.map": "/static/js/main.ada55a7a.js.map"
+    "main.css": "/naturally-organic-todo/static/css/main.e5628d7f.css",
+    "main.js": "/naturally-organic-todo/static/js/main.3ec10ea0.js",
+    "index.html": "/naturally-organic-todo/index.html",
+    "main.e5628d7f.css.map": "/naturally-organic-todo/static/css/main.e5628d7f.css.map",
+    "main.3ec10ea0.js.map": "/naturally-organic-todo/static/js/main.3ec10ea0.js.map"
   },
   "entrypoints": [
     "static/css/main.e5628d7f.css",
-    "static/js/main.ada55a7a.js"
+    "static/js/main.3ec10ea0.js"
   ]
 }
