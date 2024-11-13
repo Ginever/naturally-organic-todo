@@ -30,17 +30,19 @@ function App() {
     task: null,
     priority: null,
     quantity: null,
-    isBagged: null,
+    bagState: null,
   });
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     onSnapshot(q, (snapshot) => {
       setTodos(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          item: doc.data(),
-        }))
+        snapshot.docs
+          .map((doc) => ({
+            id: doc.id,
+            item: doc.data(),
+          }))
+          .concat()
       );
     });
   }, [inputs]);
@@ -48,9 +50,10 @@ function App() {
   const handleChange = (event) => {
     const name = event.target.name;
     var value = event.target.value;
-
-    if (name === "isBagged") {
-      value = !inputs.isBagged;
+    
+    if (name === "bagState") {
+      console.log(value);
+      value = inputs.bagState == 1 ? 0 : 1;
     }
 
     setInputs((values) => ({ ...values, [name]: value }));
@@ -61,7 +64,7 @@ function App() {
     addDoc(collection(db, "todos"), {
       task: inputs.task,
       priority: inputs.priority,
-      isBagged: inputs.isBagged,
+      bagState: inputs.bagState,
       quantity: inputs.quantity,
       timestamp: serverTimestamp(),
     });
@@ -70,7 +73,7 @@ function App() {
 
   const closeModal = () => {
     setOpenModal(false);
-    setInputs({ task: null, priority: null, quantity: null, isBagged: null });
+    setInputs({ task: null, priority: null, quantity: null, bagState: null });
   };
   return (
     <>
@@ -134,12 +137,12 @@ function App() {
               control={
                 <Checkbox
                   margin="auto"
-                  name="isBagged"
-                  checked={inputs.isBagged}
+                  name="bagState"
+                  checked={inputs.bagState}
                   onChange={(e) => handleChange(e)}
                 />
               }
-              label="isBagged"
+              label="bagState"
             />
 
             <Button

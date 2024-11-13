@@ -16,21 +16,27 @@ const Todo = ({ arr }) => {
       className="outline m-3 rounded table border-20"
       style={{
         width: "auto",
-        color: arr.item.isBagged ?? false ? "black" : "red",
-      }}
-      button
-      onClick={() => {
-        setDoc(doc(db, "todos", arr.id), {
-          ...arr.item,
-          isBagged: !arr.item.isBagged,
-        });
-        console.log("clicked" + arr.item.isBagged);
+        color:
+          { 0: "red", 1: "black", 2: "green" }[arr.item.bagState ?? 0] ??
+          "blue",
       }}
     >
-      <ListItemText
-        primary={arr.item.task ?? "Someone forgot the name"}
-        secondary={"quantity: " + (arr.item.quantity ?? "?")}
-      />
+      <ListItemButton
+        onClick={() => {
+          setDoc(doc(db, "todos", arr.id), {
+            ...arr.item,
+            bagState: (arr.item.bagState + 1) % 3,
+          });
+        }}
+      >
+        <ListItemText
+          primary={arr.item.task ?? "Someone forgot the name"}
+          secondary={"quantity: " + (arr.item.quantity ?? "?")}
+        />
+        <ListItemText class="float-right">
+          {arr.item.priority ?? "?"}
+        </ListItemText>
+      </ListItemButton>{" "}
       <ListItemButton class="float-right mr-3" edge="end">
         <IconButton edge="end" aria-label="delete">
           <DeleteIcon
