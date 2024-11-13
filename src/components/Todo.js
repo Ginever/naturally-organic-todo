@@ -30,7 +30,7 @@ const Todo = ({ arr }) => {
         }}
       >
         <ListItemText
-          primary={arr.item.task ?? "Someone forgot the name"}
+          primary={<b>{arr.item.task ?? "Someone forgot the name"}</b>}
           secondary={"quantity: " + (arr.item.quantity ?? "?")}
         />
         <ListItemText class="float-right">
